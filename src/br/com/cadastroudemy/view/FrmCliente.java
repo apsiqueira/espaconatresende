@@ -8,6 +8,8 @@ package br.com.cadastroudemy.view;
 import br.com.cadastroudemy.dao.ClientesDao;
 import br.com.cadastroudemy.model.Clientes;
 import br.com.cadastroudemy.suport.SoNumeros;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,6 +20,14 @@ import javax.swing.table.DefaultTableModel;
  * @author power
  */
 public class FrmCliente extends javax.swing.JFrame {
+    
+    
+    public void posisitionFrame(){
+        
+    Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = 
+            getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    
+    }
 
     public void limparTela() {
 
@@ -81,6 +91,7 @@ public class FrmCliente extends javax.swing.JFrame {
      */
     public FrmCliente() {
         initComponents();
+        posisitionFrame();
         txtNumero.setDocument(new SoNumeros());
         //txtCpf.setDocument(new SoNumeros());
         //txtCelular.setDocument(new SoNumeros());
@@ -469,10 +480,10 @@ public class FrmCliente extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(45, 45, 45)
+                        .addGap(86, 86, 86)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

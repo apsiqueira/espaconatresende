@@ -218,10 +218,10 @@
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNome" min="-2" pref="657" max="-2" attributes="0"/>
                                   <Component id="txtCodigo" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <Component id="txtNome" alignment="0" min="-2" pref="657" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
