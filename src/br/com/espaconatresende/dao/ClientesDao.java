@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cadastroudemy.dao;
+package br.com.espaconatresende.dao;
 
-import br.com.cadastroudemy.jdbc.ConnectionFactory;
-import br.com.cadastroudemy.model.Clientes;
+import br.com.espaconatresende.jdbc.ConnectionFactory;
+import br.com.espaconatresende.model.Clientes;
+import br.com.espaconatresende.suport.WebServiceCep;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -178,9 +182,55 @@ public class ClientesDao {
         return null;
 
     }
-    
-    public List<Clientes> pesquisarClientePorNome(String nome){
-        
+
+    //metodo consulta por nome 
+    public Clientes consultaPorNome(String nome) {
+
+        try {
+
+            String sql = "select * from tb_clientes where nome=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setString(1, nome);
+
+            //quando se faz um selec no bunacop temos que armazenar em um objeto do tipo resultset
+            ResultSet rst = pst.executeQuery();
+
+            //pegar resultados do resultset percorrendo todos os campos  retornado
+            Clientes obj = new Clientes();
+            if (rst.next()) {
+
+                //criando objeto cliente para receber os valores , objj recebe o valor com o nome do campo do banco
+                obj.setId(rst.getInt("id"));
+                obj.setNome(rst.getString("nome"));
+                obj.setRg(rst.getString("rg"));
+                obj.setCpf(rst.getString("cpf"));
+                obj.setEmail(rst.getString("email"));
+                obj.setTelefone(rst.getString("telefone"));
+                obj.setCelular(rst.getString("celular"));
+                obj.setCep(rst.getString("cep"));
+                obj.setEndereco(rst.getString("endereco"));
+                obj.setNumero(rst.getInt("numero"));
+                obj.setComplemento(rst.getString("complemento"));
+                obj.setBairro(rst.getString("bairro"));
+                obj.setCidade(rst.getString("cidade"));
+                obj.setEstado(rst.getString("estado"));
+                obj.setNascimento(rst.getString("nascimento"));
+
+                //adicionar o objeto na lista 
+            }
+            return obj;
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return null;
+        }
+
+    }
+
+    public List<Clientes> pesquisarClientePorNome(String nome) {
+
         try {
             //criação da lista 
             List<Clientes> lista = new ArrayList<>();
@@ -188,8 +238,8 @@ public class ClientesDao {
             //criar comando sql, organizar e executar
             String sql = "select * from tb_clientes where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            
-            pst.setString(1,nome);
+
+            pst.setString(1, nome);
 
             //quando se faz um selec no bunacop temos que armazenar em um objeto do tipo resultset
             ResultSet rst = pst.executeQuery();
@@ -228,9 +278,48 @@ public class ClientesDao {
             JOptionPane.showMessageDialog(null, e);
         }
         return null;
-    
-    
-    
+
     }
 
+    public Clientes buscaCep(String cep) {
+
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+
+        Clientes obj = new Clientes();
+        boolean conexao=consegueConectar("http://www.google.com.br");
+        
+
+        try {
+            if (webServiceCep.wasSuccessful()) {
+                obj.setEndereco(webServiceCep.getLogradouroFull());
+                obj.setCidade(webServiceCep.getCidade());
+                obj.setBairro(webServiceCep.getBairro());
+                obj.setEstado(webServiceCep.getUf());
+                return obj;
+       
+            }
+            else if(conexao==false ){
+                
+                JOptionPane.showMessageDialog(null, "Erro de conexão com internet.");
+            }
+            else{
+                
+                JOptionPane.showMessageDialog(null, "Erro no formato do cep");
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public static boolean consegueConectar(String address) {
+        try {
+            URL url = new URL(address);
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
