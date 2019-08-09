@@ -44,6 +44,6 @@ public class Funcionarios extends Clientes{
         this.nivelAcesso = nivelAcesso;
     }
 
-    
-    
+  
+      
 }

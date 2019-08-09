@@ -70,21 +70,24 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
         for (Funcionarios f : lista) {
             dftm.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getEstado(),
-                c.getNascimento()
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCpf(),
+                f.getEmail(),
+                f.getSenha(),
+                f.getCargo(),
+                f.getNivelAcesso(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getEstado(),
+                f.getNascimento()
 
             });
 
@@ -106,7 +109,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
-        btnSalvar.setEnabled(false);
+        btnSalvarFuncionario.setEnabled(false);
         BtnCancelar.setEnabled(false);
 
     }
@@ -154,8 +157,8 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         txtCpf = new javax.swing.JFormattedTextField();
         jLabel19 = new javax.swing.JLabel();
         txtNascimento = new javax.swing.JFormattedTextField();
-        btnNovo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        btnNovoFuncionario = new javax.swing.JButton();
+        btnSalvarFuncionario = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
@@ -385,19 +388,19 @@ public class FrmFuncionarios extends javax.swing.JFrame {
             }
         });
 
-        btnNovo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnNovo.setText("NOVO");
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        btnNovoFuncionario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnNovoFuncionario.setText("NOVO");
+        btnNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                btnNovoFuncionarioActionPerformed(evt);
             }
         });
 
-        btnSalvar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnSalvar.setText("SALVAR");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarFuncionario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSalvarFuncionario.setText("SALVAR");
+        btnSalvarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnSalvarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -521,9 +524,9 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                         .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCadastroFuncionarioLayout.createSequentialGroup()
                                 .addGap(235, 235, 235)
-                                .addComponent(btnNovo)
+                                .addComponent(btnNovoFuncionario)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnSalvar)
+                                .addComponent(btnSalvarFuncionario)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEditar))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCadastroFuncionarioLayout.createSequentialGroup()
@@ -548,11 +551,11 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnExcluir)
-                            .addComponent(passwordFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(passwordFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovoFuncionario, btnPesquisaNome, btnSalvarFuncionario});
 
         painelCadastroFuncionarioLayout.setVerticalGroup(
             painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,12 +580,13 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21)
-                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -610,23 +614,24 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(passwordFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel22)
-                        .addComponent(comboTxtNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comboTxtNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel19)
+                        .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar)
+                    .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvarFuncionario)
                     .addComponent(btnExcluir)
                     .addComponent(btnEditar)
                     .addComponent(BtnCancelar))
                 .addContainerGap())
         );
 
-        painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovoFuncionario, btnPesquisaNome, btnSalvarFuncionario});
 
         painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {passwordFuncionario, txtCpf});
 
@@ -657,11 +662,11 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "RG", "Cpf", "E-mail", "Celular", "Telefone", "Cep", "Endereço", "Numero", "Comp", "Bairro", "Cidade", "Uf", "Nasc"
+                "Código", "Nome", "RG", "Cpf", "E-mail", "Senha", "Cargo", "Acesso", "Celular", "Telefone", "Cep", "Endereço", "Numero", "Comp", "Bairro", "Cidade", "Uf", "Nasc"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, true, true, true, false, true, true, false, true
+                true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -679,7 +684,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaFuncionarios);
         if (tabelaFuncionarios.getColumnModel().getColumnCount() > 0) {
             tabelaFuncionarios.getColumnModel().getColumn(3).setResizable(false);
-            tabelaFuncionarios.getColumnModel().getColumn(10).setResizable(false);
+            tabelaFuncionarios.getColumnModel().getColumn(13).setResizable(false);
         }
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -798,21 +803,24 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
         for (Funcionarios f : lista) {
             dftm.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getEstado(),
-                c.getNascimento()
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCpf(),
+                f.getEmail(),
+                f.getSenha(),
+                f.getCargo(),
+                f.getNivelAcesso(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getEstado(),
+                f.getNascimento()
 
             });
 
@@ -829,13 +837,13 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNascimentoActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void btnSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarFuncionarioActionPerformed
         // TODO add your handling code here:
         //botao salvar
-        btnNovo.setEnabled(false);
+        btnNovoFuncionario.setEnabled(false);
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
-        btnSalvar.setEnabled(true);
+        btnSalvarFuncionario.setEnabled(true);
         BtnCancelar.setEnabled(true);
 
         if (txtNome.getText().trim().isEmpty() || passwordFuncionario.getPassword().toString().trim().isEmpty() || txtCargo.getText().trim().isEmpty() || comboTxtNivelAcesso.getSelectedItem().toString().trim().isEmpty()) {
@@ -859,6 +867,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                 obj.setEndereco(txtEndereco.getText());
                 if (txtNumero.getText().trim().isEmpty()) {
                     // obj.setNumero=0;
+                    obj.setNumero(0);
                 } else {
                     obj.setNumero(Integer.parseInt(txtNumero.getText()));
                 }
@@ -873,10 +882,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                 FuncionariosDao dao = new FuncionariosDao();
                 dao.salvarFuncionario(obj);
 
-                btnNovo.setEnabled(true);
+                btnNovoFuncionario.setEnabled(true);
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
-                btnSalvar.setEnabled(false);
+                btnSalvarFuncionario.setEnabled(false);
                 BtnCancelar.setEnabled(false);
 
             } catch (Exception e) {
@@ -887,25 +896,26 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvarFuncionarioActionPerformed
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+    private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
         // TODO add your handling code here:
 
         limparTela();
 
-        btnNovo.setEnabled(false);
+        btnNovoFuncionario.setEnabled(false);
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
-        btnSalvar.setEnabled(true);
+        btnSalvarFuncionario.setEnabled(true);
         BtnCancelar.setEnabled(true);
+        btnPesquisaNome.setEnabled(false);
 
-    }//GEN-LAST:event_btnNovoActionPerformed
+    }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
 
-        listarTabela();
+           listarTabela();
 
         //carregar a lista no painel
     }//GEN-LAST:event_formWindowActivated
@@ -926,12 +936,12 @@ public class FrmFuncionarios extends javax.swing.JFrame {
             int op = JOptionPane.showOptionDialog(null, "Deseja excluir o Funcionario?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
             if (op == 1) {
 
-                dao.excluirCliente(obj);
+                dao.excluirFuncionario(obj);
 
-                btnNovo.setEnabled(true);
+                btnNovoFuncionario.setEnabled(true);
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
-                btnSalvar.setEnabled(false);
+                btnSalvarFuncionario.setEnabled(false);
                 BtnCancelar.setEnabled(false);
                 Utilitarios ut = new Utilitarios();
                 ut.limpaTela(painelCadastroFuncionario);
@@ -949,10 +959,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
     private void tabelaFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncionariosMouseClicked
         // TODO add your handling code here:
         //passando dados do lista para os campos da primeira tela
-        btnNovo.setEnabled(false);
+        btnNovoFuncionario.setEnabled(false);
         btnEditar.setEnabled(true);
         btnExcluir.setEnabled(true);
-        btnSalvar.setEnabled(false);
+        btnSalvarFuncionario.setEnabled(false);
         BtnCancelar.setEnabled(true);
 
         //caixa de confirmação
@@ -990,11 +1000,14 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         //editar contato
         try {
 
-            Clientes obj = new Clientes();
+            Funcionarios obj = new Funcionarios();
             obj.setNome(txtNome.getText());
             obj.setRg(txtRg.getText());
             obj.setCpf(txtCpf.getText());
             obj.setEmail(txtEmail.getText());
+            //obj.setSenha();
+            //obj.setCargo();
+            //obj.setNivelAcesso();
             obj.setTelefone(txtTelefone.getText());
             obj.setCelular(txtCelular.getText());
             obj.setCep(txtCep.getText());
@@ -1007,12 +1020,12 @@ public class FrmFuncionarios extends javax.swing.JFrame {
             obj.setNascimento(txtNascimento.getText());
             obj.setId(Integer.parseInt(txtCodigo.getText()));
 
-            ClientesDao dao = new ClientesDao();
-            dao.alterarCliente(obj);
-            btnNovo.setEnabled(true);
+            FuncionariosDao dao = new FuncionariosDao();
+            dao.alterarFuncionario(obj);
+            btnNovoFuncionario.setEnabled(true);
             btnEditar.setEnabled(false);
             btnExcluir.setEnabled(false);
-            btnSalvar.setEnabled(false);
+            btnSalvarFuncionario.setEnabled(false);
             BtnCancelar.setEnabled(false);
 
             Utilitarios ut = new Utilitarios();
@@ -1034,10 +1047,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         limparTela();
 
-        btnNovo.setEnabled(true);
+        btnNovoFuncionario.setEnabled(true);
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
-        btnSalvar.setEnabled(false);
+        btnSalvarFuncionario.setEnabled(false);
         BtnCancelar.setEnabled(false);
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
@@ -1055,13 +1068,13 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
             } else {
                 //cria um objeto
-                Clientes obj = new Clientes();
+                Funcionarios obj = new Funcionarios();
 
                 //cria um ojeto dao para conexão
-                ClientesDao dao = new ClientesDao();
+                FuncionariosDao dao = new FuncionariosDao();
 
                 //uasr o metodo pesquisar por nome 
-                obj = dao.consultaPorNome(nome);
+                obj = dao.consultaFuncionarioPorNome(nome);
                 if (obj.getNome() == null) {
                     JOptionPane.showMessageDialog(null, "Cadastro não correspendo a um regsitro exato no banco de dados");
                     //exibir dados do obj nos campos de texto
@@ -1083,10 +1096,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     comboTxtEstado.setSelectedItem(obj.getEstado());
                     txtNascimento.setText(obj.getNascimento());
 
-                    btnNovo.setEnabled(true);
+                    btnNovoFuncionario.setEnabled(true);
                     btnEditar.setEnabled(false);
                     btnExcluir.setEnabled(false);
-                    btnSalvar.setEnabled(false);
+                    btnSalvarFuncionario.setEnabled(false);
                     BtnCancelar.setEnabled(true);
 
                 }
@@ -1109,8 +1122,8 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
         try {
             if (evt.getKeyCode() == KeyEvent.VK_ENTER && txtCep.getText().length() >= 8) {
-                Clientes obj = new Clientes();
-                ClientesDao dao = new ClientesDao();
+                Funcionarios obj = new Funcionarios();
+                FuncionariosDao dao = new FuncionariosDao();
                 obj = dao.buscaCep(txtCep.getText());
 
                 txtEndereco.setText(obj.getEndereco());
@@ -1173,10 +1186,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
     private javax.swing.JButton BtnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnNovoFuncionario;
     private javax.swing.JButton btnPesquisaNome;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvarFuncionario;
     private javax.swing.JComboBox<String> comboTxtEstado;
     private javax.swing.JComboBox<String> comboTxtNivelAcesso;
     private javax.swing.JLabel jLabel1;
