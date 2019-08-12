@@ -622,6 +622,11 @@ public class FrmCliente extends javax.swing.JFrame {
                 tabelaClientesMouseReleased(evt);
             }
         });
+        tabelaClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabelaClientesKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaClientes);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -840,6 +845,8 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setVisible(true);
 
         listarTabela();
 
@@ -883,7 +890,7 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
-        // TODO add your handling code here:
+        /*        // TODO add your handling code here:
         //passando dados do lista para os campos da primeira tela
         btnNovo.setEnabled(false);
         btnEditar.setEnabled(true);
@@ -915,7 +922,7 @@ public class FrmCliente extends javax.swing.JFrame {
             comboTxtEstado.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
             txtNascimento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 14).toString());
 
-        }
+        }*/
 
 
     }//GEN-LAST:event_tabelaClientesMouseClicked
@@ -1064,6 +1071,50 @@ public class FrmCliente extends javax.swing.JFrame {
         //Programacao do keypress
 
     }//GEN-LAST:event_txtCepKeyPressed
+
+    private void tabelaClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaClientesKeyPressed
+
+        // TODO add your handling code here:
+        try {
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                btnNovo.setEnabled(false);
+                btnEditar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+                btnSalvar.setEnabled(false);
+                BtnCancelar.setEnabled(true);
+
+                //caixa de confirmação
+                Object[] options = {"Cancelar", "Confirmar"};
+                int op = JOptionPane.showOptionDialog(null, "Deseja abrir o contato para edição?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
+                if (op == 1) {
+                    btnEditar.setEnabled(true);
+                    jTableAbas.setSelectedIndex(0);
+
+                    txtCodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
+                    txtNome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
+                    txtRg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
+                    txtCpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
+                    txtEmail.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
+                    txtCelular.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
+                    txtTelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 6).toString());
+                    txtCep.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 7).toString());
+                    txtEndereco.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 8).toString());
+                    txtNumero.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 9).toString());
+                    txtComplemento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 10).toString());
+                    txtBairro.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 11).toString());
+                    txtCidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
+                    comboTxtEstado.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
+                    txtNascimento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 14).toString());
+
+                }
+
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_tabelaClientesKeyPressed
 
     /**
      * @param args the command line arguments
