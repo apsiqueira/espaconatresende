@@ -13,6 +13,8 @@ public class Fornecedores extends Clientes {
 
     private String marca;
     private String cnpj;
+    private String vendedor;
+  
 
     public String getMarca() {
         return marca;
@@ -28,6 +30,14 @@ public class Fornecedores extends Clientes {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
     }
 
 }
