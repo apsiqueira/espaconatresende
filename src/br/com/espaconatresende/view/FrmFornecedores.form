@@ -19,7 +19,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
@@ -43,7 +43,6 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTableAbas" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,8 +122,8 @@
           </AccessibilityProperties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Cadastro e pesquisa de Clientes ">
-                <Property name="tabTitle" type="java.lang.String" value="Cadastro e pesquisa de Clientes "/>
+              <JTabbedPaneConstraints tabName="Cadastro e pesquisa de Fornecedores ">
+                <Property name="tabTitle" type="java.lang.String" value="Cadastro e pesquisa de Fornecedores "/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -136,7 +135,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BtnCancelar" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" linkSize="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -210,7 +209,7 @@
                           </Group>
                           <Component id="txtCodigo" min="-2" pref="85" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txMarca" min="-2" pref="409" max="-2" attributes="0"/>
+                              <Component id="txtMarca" min="-2" pref="409" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -232,7 +231,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="txMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtCnpj" min="-2" max="-2" attributes="0"/>
@@ -289,13 +288,13 @@
                           <Component id="txtRg" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnNovo" linkSize="4" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="btnSalvar" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnExcluir" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEditar" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnCancelar" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -645,12 +644,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnCancelar">
+            <Component class="javax.swing.JButton" name="btnCancelar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CANCELAR"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCancelarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnPesquisaNome">
@@ -669,14 +668,14 @@
                 <Property name="text" type="java.lang.String" value="Marca:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txMarca">
+            <Component class="javax.swing.JTextField" name="txtMarca">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txMarcaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMarcaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
@@ -690,7 +689,7 @@
             <Component class="javax.swing.JFormattedTextField" name="txtCnpj">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##.###.###" subtype="-1" type="5"/>
+                  <Format format="###.###.###-##" subtype="-1" type="5"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -710,8 +709,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Consulta e altera&#xe7;&#xe3;o de clientes">
-                <Property name="tabTitle" type="java.lang.String" value="Consulta e altera&#xe7;&#xe3;o de clientes"/>
+              <JTabbedPaneConstraints tabName="Consulta e altera&#xe7;&#xe3;o de Fornecedores">
+                <Property name="tabTitle" type="java.lang.String" value="Consulta e altera&#xe7;&#xe3;o de Fornecedores"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -725,9 +724,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextPesquisar" min="-2" pref="685" max="-2" attributes="0"/>
+                              <Component id="jTextPesquisarMarca" min="-2" pref="685" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="btnPesquisar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnConsultarMarca" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="1201" max="-2" attributes="0"/>
                       </Group>
@@ -741,27 +740,27 @@
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextPesquisarMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConsultarMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="429" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="447" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextPesquisar">
+            <Component class="javax.swing.JTextField" name="jTextPesquisarMarca">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPesquisarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPesquisarMarcaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnPesquisar">
+            <Component class="javax.swing.JButton" name="btnConsultarMarca">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -769,7 +768,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarMarcaActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -779,45 +778,33 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tabelaClientes">
+                <Component class="javax.swing.JTable" name="tabelaFornecedores">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="18" rowCount="0">
+                      <Table columnCount="16" rowCount="0">
                         <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
-                        <Column editable="true" title="Nome" type="java.lang.Object"/>
-                        <Column editable="true" title="RG" type="java.lang.Object"/>
-                        <Column editable="true" title="Cpf" type="java.lang.Object"/>
+                        <Column editable="true" title="Marca" type="java.lang.Object"/>
+                        <Column editable="true" title="Cnpj" type="java.lang.Object"/>
+                        <Column editable="true" title="Vendedor" type="java.lang.Object"/>
                         <Column editable="true" title="E-mail" type="java.lang.Object"/>
-                        <Column editable="true" title="Senha" type="java.lang.Object"/>
-                        <Column editable="true" title="Cargo" type="java.lang.Object"/>
-                        <Column editable="true" title="Nivel de acesso" type="java.lang.Object"/>
-                        <Column editable="true" title="Celular" type="java.lang.Object"/>
+                        <Column editable="true" title="Celuar" type="java.lang.Object"/>
                         <Column editable="true" title="Telefone" type="java.lang.Object"/>
                         <Column editable="true" title="Cep" type="java.lang.Object"/>
                         <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
-                        <Column editable="true" title="Numero" type="java.lang.Object"/>
-                        <Column editable="true" title="Comp" type="java.lang.Object"/>
+                        <Column editable="false" title="Numero" type="java.lang.Object"/>
                         <Column editable="true" title="Bairro" type="java.lang.Object"/>
                         <Column editable="true" title="Cidade" type="java.lang.Object"/>
+                        <Column editable="true" title="Comp" type="java.lang.Object"/>
                         <Column editable="false" title="Uf" type="java.lang.Object"/>
-                        <Column editable="true" title="Nasc" type="java.lang.Object"/>
+                        <Column editable="false" title="Rg" type="java.lang.Object"/>
+                        <Column editable="true" title="Cpf" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -905,9 +892,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaClientesMouseClicked"/>
-                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaClientesMouseReleased"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tabelaClientesKeyPressed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaFornecedoresMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaFornecedoresMouseReleased"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tabelaFornecedoresKeyPressed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -917,7 +904,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nome :"/>
+                <Property name="text" type="java.lang.String" value="Marca :"/>
               </Properties>
             </Component>
           </SubComponents>

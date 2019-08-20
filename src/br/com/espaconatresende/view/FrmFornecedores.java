@@ -7,8 +7,10 @@ package br.com.espaconatresende.view;
 
 import br.com.espaconatresende.dao.FornecedorDao;
 import br.com.espaconatresende.model.Fornecedores;
+
 import br.com.espaconatresende.suport.SoNumeros;
 import br.com.espaconatresende.suport.Utilitarios;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -26,21 +28,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmFornecedores extends javax.swing.JFrame {
 
-    public void positionFrame() {
-
-        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension dw
-                = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
-
-    }
-
-    public void limparTela() {
-
+    public void limparTelaFornecedor() {
         txtCodigo.setText("");
+        txtMarca.setText("");
         txtVendedor.setText("");
-        txtRg.setText("");
-        txtCpf.setText("");
         txtEmail.setText("");
         txtCelular.setText("");
         txtTelefone.setText("");
@@ -50,7 +41,19 @@ public class FrmFornecedores extends javax.swing.JFrame {
         txtComplemento.setText("");
         txtBairro.setText("");
         txtCidade.setText("");
+        txtComplemento.setText("");
         comboTxtEstado.setSelectedItem(0);
+        txtRg.setText("");
+        txtCpf.setText("");
+
+    }
+
+    public void positionFrame() {
+
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw
+                = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
 
     }
 
@@ -58,33 +61,34 @@ public class FrmFornecedores extends javax.swing.JFrame {
     public void listarTabela() {
 
         //criar um dao ja com conexao
-        ClientesDao dao = new ClientesDao();
+        FornecedorDao dao = new FornecedorDao();
 
         //chama o metodo listar clientes da classe clientesdao e passa para a lista
-        List<Clientes> lista = dao.listarClientes();
+        List<Fornecedores> lista = dao.listarFornecedores();
 
         //define um dfalttable model fazendo o cast do modelo da tabela 
-        DefaultTableModel dftm = (DefaultTableModel) tabelaClientes.getModel();
+        DefaultTableModel dftm = (DefaultTableModel) tabelaFornecedores.getModel();
         //seta valor inicial de apresentação de linha de dados para vazio
         dftm.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Fornecedores f : lista) {
             dftm.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getEstado(),
-                c.getNascimento()
+                f.getId(),
+                f.getMarca(),
+                f.getCnpj(),
+                f.getVendedor(),
+                f.getEmail(),
+                f.getCelular(),
+                f.getTelefone(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getComplemento(),
+                f.getEstado(),
+                f.getRg(),
+                f.getCpf()
 
             });
 
@@ -98,7 +102,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
     public FrmFornecedores() {
         initComponents();
 
-        positionFrame();
+        //   positionFrame();
         txtNumero.setDocument(new SoNumeros());
         //txtCpf.setDocument(new SoNumeros());
         //txtCelular.setDocument(new SoNumeros());
@@ -107,7 +111,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(false);
+        btnCancelar.setEnabled(false);
 
     }
 
@@ -158,17 +162,17 @@ public class FrmFornecedores extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnPesquisaNome = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txMarca = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCnpj = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
-        jTextPesquisar = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
+        jTextPesquisarMarca = new javax.swing.JTextField();
+        btnConsultarMarca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaClientes = new javax.swing.JTable();
+        tabelaFornecedores = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -399,10 +403,10 @@ public class FrmFornecedores extends javax.swing.JFrame {
             }
         });
 
-        BtnCancelar.setText("CANCELAR");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -416,10 +420,10 @@ public class FrmFornecedores extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Marca:");
 
-        txMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txMarca.addActionListener(new java.awt.event.ActionListener() {
+        txtMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txMarcaActionPerformed(evt);
+                txtMarcaActionPerformed(evt);
             }
         });
 
@@ -427,7 +431,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
         jLabel7.setText("CNPJ :");
 
         try {
-            txtCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###")));
+            txtCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -446,7 +450,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(BtnCancelar))
+                        .addComponent(btnCancelar))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -509,7 +513,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                         .addComponent(btnPesquisaNome))
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addComponent(txMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -517,7 +521,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        painelCadastroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
 
         painelCadastroLayout.setVerticalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,7 +533,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7))
                     .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -576,73 +580,73 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir)
                     .addComponent(btnEditar)
-                    .addComponent(BtnCancelar))
+                    .addComponent(btnCancelar))
                 .addContainerGap())
         );
 
-        painelCadastroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
 
-        jTableAbas.addTab("Cadastro e pesquisa de Clientes ", painelCadastro);
+        jTableAbas.addTab("Cadastro e pesquisa de Fornecedores ", painelCadastro);
         painelCadastro.getAccessibleContext().setAccessibleName("");
         painelCadastro.getAccessibleContext().setAccessibleDescription("");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        jTextPesquisarMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextPesquisarMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPesquisarActionPerformed(evt);
+                jTextPesquisarMarcaActionPerformed(evt);
             }
         });
 
-        btnPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisar.setText("Consulta");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarMarca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnConsultarMarca.setText("Consulta");
+        btnConsultarMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnConsultarMarcaActionPerformed(evt);
             }
         });
 
-        tabelaClientes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFornecedores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabelaFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "RG", "Cpf", "E-mail", "Senha", "Cargo", "Nivel de acesso", "Celular", "Telefone", "Cep", "Endereço", "Numero", "Comp", "Bairro", "Cidade", "Uf", "Nasc"
+                "Código", "Marca", "Cnpj", "Vendedor", "E-mail", "Celuar", "Telefone", "Cep", "Endereço", "Numero", "Bairro", "Cidade", "Comp", "Uf", "Rg", "Cpf"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true
+                true, true, true, true, true, true, true, true, true, false, true, true, true, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaFornecedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaClientesMouseClicked(evt);
+                tabelaFornecedoresMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tabelaClientesMouseReleased(evt);
+                tabelaFornecedoresMouseReleased(evt);
             }
         });
-        tabelaClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+        tabelaFornecedores.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tabelaClientesKeyPressed(evt);
+                tabelaFornecedoresKeyPressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaClientes);
+        jScrollPane1.setViewportView(tabelaFornecedores);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Nome :");
+        jLabel18.setText("Marca :");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -654,9 +658,9 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextPesquisarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(btnPesquisar))
+                        .addComponent(btnConsultarMarca))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -666,13 +670,13 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(jTextPesquisarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarMarca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
         );
 
-        jTableAbas.addTab("Consulta e alteração de clientes", jPanel3);
+        jTableAbas.addTab("Consulta e alteração de Fornecedores", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -681,8 +685,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTableAbas)
-                .addContainerGap())
+                .addComponent(jTableAbas))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -693,6 +696,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
@@ -731,41 +735,42 @@ public class FrmFornecedores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void jTextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPesquisarActionPerformed
+    private void jTextPesquisarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPesquisarMarcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPesquisarActionPerformed
+    }//GEN-LAST:event_jTextPesquisarMarcaActionPerformed
 
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        String nome = "%" + jTextPesquisar.getText() + "%";
+    private void btnConsultarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarMarcaActionPerformed
+        String marca = "%" + jTextPesquisarMarca.getText() + "%";
 
-        ClientesDao dao = new ClientesDao();
+        FornecedorDao dao = new FornecedorDao();
 
         //chama o metodo listar clientes da classe clientesdao e passa para a lista
-        List<Clientes> lista = dao.pesquisarClientePorNome(nome);
+        List<Fornecedores> lista = dao.consultaFornecedorPorMarca(marca);
 
         //define um dfalttable model fazendo o cast do modelo da tabela 
-        DefaultTableModel dftm = (DefaultTableModel) tabelaClientes.getModel();
+        DefaultTableModel dftm = (DefaultTableModel) tabelaFornecedores.getModel();
         //seta valor inicial de apresentação de linha de dados para vazio
         dftm.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Fornecedores f : lista) {
             dftm.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getEstado(),
-                c.getNascimento()
+                f.getId(),
+                f.getMarca(),
+                f.getCnpj(),
+                f.getVendedor(),
+                f.getEmail(),
+                f.getCelular(),
+                f.getTelefone(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getComplemento(),
+                f.getEstado(),
+                f.getRg(),
+                f.getCpf()
 
             });
 
@@ -776,62 +781,49 @@ public class FrmFornecedores extends javax.swing.JFrame {
 
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    }//GEN-LAST:event_btnConsultarMarcaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         //botao salvar
-        btnNovo.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnExcluir.setEnabled(false);
-        btnSalvar.setEnabled(true);
-        BtnCancelar.setEnabled(true);
 
         if (txtVendedor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome precisa ser obrigatoriamente preechido.");
 
         } else {
-            try {
+            Fornecedores obj = new Fornecedores();
+            obj.setMarca(txtMarca.getText());
+            obj.setCnpj(txtCnpj.getText());
+            obj.setVendedor(txtVendedor.getText());
+            obj.setEmail(txtEmail.getText());
+            obj.setCelular(txtCelular.getText());
+            obj.setTelefone(txtTelefone.getText());
+            obj.setCep(txtCep.getText());
+            obj.setEndereco(txtEndereco.getText());
+            if (txtNumero.getText().equals("")) {
+                // obj.setNumero=0;
+            } else {
+                obj.setNumero(Integer.parseInt(txtNumero.getText()));
+            }
+            ;
+            obj.setBairro(txtBairro.getText());
+            obj.setCidade(txtCidade.getText());
+            obj.setComplemento(txtComplemento.getText());
+            obj.setEstado(comboTxtEstado.getSelectedItem().toString());
+            obj.setRg(txtRg.getText());
+            obj.setCpf(txtCpf.getText());
+            FornecedorDao dao = new FornecedorDao();
 
-                Fornecedores obj = new Fornecedores();
-                obj.setMarca(txMarca.getText());
-                obj.setCnpj(txtCnpj.getText());
-                obj.setVendedor(txtVendedor.getText());
-                obj.setEmail(txtEmail.getText());
+            Boolean salvaNobanco = dao.salvarFornecedores(obj);
 
-                obj.setCelular(txtCelular.getText());
-                obj.setTelefone(txtTelefone.getText());
-                obj.setCep(txtCep.getText());
-                obj.setEndereco(txtEndereco.getText());
-                if (txtNumero.getText().equals("")) {
-                    // obj.setNumero=0;
-                } else {
-                    obj.setNumero(Integer.parseInt(txtNumero.getText()));
-                }
-                ;
-
-              
-                obj.setBairro(txtBairro.getText());
-                obj.setCidade(txtCidade.getText());
-                obj.setComplemento(txtComplemento.getText());
-                obj.setEstado(comboTxtEstado.getSelectedItem().toString());
-                obj.setRg(txtRg.getText());
-                obj.setEstado(txtCpf.getText());
-               
-                
-
-                FornecedorDao dao = new FornecedorDao();
-                dao.salvarFornecedores(obj);
-
+            if (salvaNobanco == true) {
                 btnNovo.setEnabled(true);
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(false);
+                btnCancelar.setEnabled(false);
+                btnPesquisaNome.setEnabled(true);
 
-            } catch (Exception e) {
-
-                JOptionPane.showMessageDialog(null, "Erro ao salvar cliente! " + e);
             }
 
         }
@@ -842,19 +834,20 @@ public class FrmFornecedores extends javax.swing.JFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
 
-        limparTela();
+        limparTelaFornecedor();
 
         btnNovo.setEnabled(false);
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(true);
-        BtnCancelar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnPesquisaNome.setEnabled(false);
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+
         this.setVisible(true);
 
         listarTabela();
@@ -868,23 +861,23 @@ public class FrmFornecedores extends javax.swing.JFrame {
         //excluir cliente
         try {
 
-            Clientes obj = new Clientes();
+            Fornecedores obj = new Fornecedores();
 
             obj.setId(Integer.parseInt(txtCodigo.getText()));
 
-            ClientesDao dao = new ClientesDao();
+            FornecedorDao dao = new FornecedorDao();
 
             Object[] options = {"Cancelar", "Confirmar"};
-            int op = JOptionPane.showOptionDialog(null, "Deseja excluir o cliente?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+            int op = JOptionPane.showOptionDialog(null, "Deseja excluir o Fornecedor?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
             if (op == 1) {
 
-                dao.excluirCliente(obj);
+                dao.excluirFornecedor(obj);
 
                 btnNovo.setEnabled(true);
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(false);
+                btnCancelar.setEnabled(false);
                 Utilitarios ut = new Utilitarios();
                 ut.limpaTela(painelCadastro);
 
@@ -892,49 +885,16 @@ public class FrmFornecedores extends javax.swing.JFrame {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Erro ao excluir cliente! " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Fornecedor! " + e);
         }
 
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
-        /*        // TODO add your handling code here:
-        //passando dados do lista para os campos da primeira tela
-        btnNovo.setEnabled(false);
-        btnEditar.setEnabled(true);
-        btnExcluir.setEnabled(true);
-        btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(true);
-
-        //caixa de confirmação
-        Object[] options = {"Cancelar", "Confirmar"};
-        int op = JOptionPane.showOptionDialog(null, "Deseja abrir o contato para edição?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-
-        if (op == 1) {
-            btnEditar.setEnabled(true);
-            jTableAbas.setSelectedIndex(0);
-
-            txtCodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
-            txtNome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
-            txtRg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
-            txtCpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
-            txtEmail.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
-            txtCelular.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
-            txtTelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 6).toString());
-            txtCep.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 7).toString());
-            txtEndereco.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 8).toString());
-            txtNumero.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 9).toString());
-            txtComplemento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 10).toString());
-            txtBairro.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 11).toString());
-            txtCidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
-            comboTxtEstado.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
-            txtNascimento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 14).toString());
-
-        }*/
+    private void tabelaFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFornecedoresMouseClicked
 
 
-    }//GEN-LAST:event_tabelaClientesMouseClicked
+    }//GEN-LAST:event_tabelaFornecedoresMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
@@ -942,55 +902,60 @@ public class FrmFornecedores extends javax.swing.JFrame {
         //editar contato
         try {
 
-            Clientes obj = new Clientes();
+            Fornecedores obj = new Fornecedores();
+            obj.setId(Integer.parseInt(txtCodigo.getText()));
             obj.setNome(txtVendedor.getText());
-            obj.setRg(txtRg.getText());
-            obj.setCpf(txtCpf.getText());
+            obj.setMarca(txtMarca.getText());
+            obj.setCnpj(txtCnpj.getText());
+            obj.setVendedor(txtVendedor.getText());
             obj.setEmail(txtEmail.getText());
-            obj.setTelefone(txtTelefone.getText());
             obj.setCelular(txtCelular.getText());
+            obj.setTelefone(txtTelefone.getText());
             obj.setCep(txtCep.getText());
             obj.setEndereco(txtEndereco.getText());
             obj.setNumero(Integer.parseInt(txtNumero.getText()));
-            obj.setComplemento(txtComplemento.getText());
             obj.setBairro(txtBairro.getText());
             obj.setCidade(txtCidade.getText());
+            obj.setComplemento(txtComplemento.getText());
             obj.setEstado(comboTxtEstado.getSelectedItem().toString());
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
+            obj.setRg(txtRg.getText());
+            obj.setCpf(txtCnpj.getText());
 
-            ClientesDao dao = new ClientesDao();
-            dao.alterarCliente(obj);
+            FornecedorDao dao = new FornecedorDao();
+            dao.alterarFornecedor(obj);
             btnNovo.setEnabled(true);
             btnEditar.setEnabled(false);
             btnExcluir.setEnabled(false);
             btnSalvar.setEnabled(false);
-            BtnCancelar.setEnabled(false);
+            btnCancelar.setEnabled(false);
 
             Utilitarios ut = new Utilitarios();
             ut.limpaTela(painelCadastro);
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Erro ao salvar cliente! " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar Fornecedor! " + e);
         }
 
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void tabelaClientesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseReleased
+    private void tabelaFornecedoresMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFornecedoresMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabelaClientesMouseReleased
+    }//GEN-LAST:event_tabelaFornecedoresMouseReleased
 
-    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        limparTela();
+        limparTelaFornecedor();
 
         btnNovo.setEnabled(true);
+
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(false);
-    }//GEN-LAST:event_BtnCancelarActionPerformed
+        btnCancelar.setEnabled(false);
+        btnPesquisaNome.setEnabled(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaNomeActionPerformed
         // TODO add your handling code here:
@@ -1002,42 +967,44 @@ public class FrmFornecedores extends javax.swing.JFrame {
             String nome = txtVendedor.getText();
 
             if (nome.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Digite um nome por favor.");
+                JOptionPane.showMessageDialog(null, "Digite um Vendedor por favor.");
 
             } else {
                 //cria um objeto
-                Clientes obj = new Clientes();
+                Fornecedores obj = new Fornecedores();
 
                 //cria um ojeto dao para conexão
-                ClientesDao dao = new ClientesDao();
+                FornecedorDao dao = new FornecedorDao();
 
                 //uasr o metodo pesquisar por nome 
-                obj = dao.consultaPorNome(nome);
-                if (obj.getNome() == null) {
-                    JOptionPane.showMessageDialog(null, "Cadastro não correspendo a um regsitro exato no banco de dados");
+                obj = dao.pesquisaFornecedorPeloVendedor(nome);
+                if (obj.getVendedor() == null) {
+                    JOptionPane.showMessageDialog(null, "Cadastro não correspende a um registro exato no banco de dados");
                     //exibir dados do obj nos campos de texto
 
                 } else {
                     txtCodigo.setText(String.valueOf(obj.getId()));
+                    txtMarca.setText(String.valueOf(obj.getMarca()));
+                    txtCnpj.setText(String.valueOf(obj.getCnpj()));
                     txtVendedor.setText(obj.getNome());
-                    txtRg.setText(obj.getRg());
-                    txtCpf.setText(obj.getCpf());
                     txtEmail.setText(obj.getEmail());
                     txtCelular.setText(obj.getCelular());
                     txtTelefone.setText(obj.getTelefone());
                     txtCep.setText(obj.getCep());
                     txtEndereco.setText(obj.getEndereco());
                     txtNumero.setText(String.valueOf(obj.getNumero()));
-                    txtComplemento.setText(obj.getComplemento());
                     txtBairro.setText(obj.getBairro());
                     txtCidade.setText(obj.getCidade());
+                    txtComplemento.setText(obj.getComplemento());
                     comboTxtEstado.setSelectedItem(obj.getEstado());
+                    txtRg.setText(obj.getRg());
+                    txtCpf.setText(obj.getCpf());
 
                     btnNovo.setEnabled(true);
                     btnEditar.setEnabled(false);
                     btnExcluir.setEnabled(false);
                     btnSalvar.setEnabled(false);
-                    BtnCancelar.setEnabled(true);
+                    btnCancelar.setEnabled(true);
 
                 }
 
@@ -1059,8 +1026,8 @@ public class FrmFornecedores extends javax.swing.JFrame {
 
         try {
             if (evt.getKeyCode() == KeyEvent.VK_ENTER && txtCep.getText().length() >= 8) {
-                Clientes obj = new Clientes();
-                ClientesDao dao = new ClientesDao();
+                Fornecedores obj = new Fornecedores();
+                FornecedorDao dao = new FornecedorDao();
                 obj = dao.buscaCep(txtCep.getText());
 
                 txtEndereco.setText(obj.getEndereco());
@@ -1079,7 +1046,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtCepKeyPressed
 
-    private void tabelaClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaClientesKeyPressed
+    private void tabelaFornecedoresKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaFornecedoresKeyPressed
 
         // TODO add your handling code here:
         try {
@@ -1088,7 +1055,8 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 btnEditar.setEnabled(true);
                 btnExcluir.setEnabled(true);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(true);
+                btnCancelar.setEnabled(true);
+                btnPesquisaNome.setEnabled(false);
 
                 //caixa de confirmação
                 Object[] options = {"Cancelar", "Confirmar"};
@@ -1098,20 +1066,22 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     btnEditar.setEnabled(true);
                     jTableAbas.setSelectedIndex(0);
 
-                    txtCodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
-                    txtVendedor.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
-                    txtRg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
-                    txtCpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
-                    txtEmail.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
-                    txtCelular.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
-                    txtTelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 6).toString());
-                    txtCep.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 7).toString());
-                    txtEndereco.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 8).toString());
-                    txtNumero.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 9).toString());
-                    txtComplemento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 10).toString());
-                    txtBairro.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 11).toString());
-                    txtCidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
-                    comboTxtEstado.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
+                    txtCodigo.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 0).toString());
+                    txtMarca.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 1).toString());
+                    txtCnpj.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
+                    txtVendedor.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
+                    txtEmail.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 4).toString());
+                    txtCelular.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 5).toString());
+                    txtTelefone.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 6).toString());
+                    txtCep.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 7).toString());
+                    txtEndereco.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 8).toString());
+                    txtNumero.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 9).toString());
+                    txtBairro.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 11).toString());
+                    txtCidade.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 12).toString());
+                    txtComplemento.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 10).toString());
+                    comboTxtEstado.setSelectedItem(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 13).toString());
+                    txtRg.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
+                    txtCpf.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 3).toString());
 
                 }
 
@@ -1120,11 +1090,11 @@ public class FrmFornecedores extends javax.swing.JFrame {
         } catch (Exception e) {
 
         }
-    }//GEN-LAST:event_tabelaClientesKeyPressed
+    }//GEN-LAST:event_tabelaFornecedoresKeyPressed
 
-    private void txMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMarcaActionPerformed
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txMarcaActionPerformed
+    }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
         // TODO add your handling code here:
@@ -1171,12 +1141,12 @@ public class FrmFornecedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnConsultarMarca;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisaNome;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -1203,10 +1173,9 @@ public class FrmFornecedores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTableAbas;
-    private javax.swing.JTextField jTextPesquisar;
+    private javax.swing.JTextField jTextPesquisarMarca;
     private javax.swing.JPanel painelCadastro;
-    private javax.swing.JTable tabelaClientes;
-    private javax.swing.JTextField txMarca;
+    private javax.swing.JTable tabelaFornecedores;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCelular;
     private javax.swing.JFormattedTextField txtCep;
@@ -1217,6 +1186,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JFormattedTextField txtRg;
     private javax.swing.JFormattedTextField txtTelefone;
