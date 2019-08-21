@@ -29,7 +29,7 @@ public class FornecedorDao {
         this.con = new ConnectionFactory().getConnection();
     }
 
-    public boolean salvarFornecedores(Fornecedores obj) {
+    public boolean salvarFornecedores (Fornecedores obj) {
         try {
 
             //passo 1:criar comando sql
@@ -65,15 +65,18 @@ public class FornecedorDao {
         } catch (Exception e) {
             if (e.toString().contains("rg_UNIQUE")) {
                 JOptionPane.showMessageDialog(null, "Rg ja existente!");
+              
 
             } 
             else if(e.toString().contains("cpf_UNIQUE")){
                  JOptionPane.showMessageDialog(null, "Cpf ja existente!");
+               
             }
             
             else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar Fornecedor!");
                 System.out.println(e.toString());
+              
 
             }
 
@@ -131,11 +134,65 @@ public class FornecedorDao {
     }
 
     public void excluirFornecedor(Fornecedores obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "delete from tb_fornecedores where id=?";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setInt(1, obj.getId());
+
+            pst.execute();
+
+            pst.close();
+
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Fornecedor excluido com sucesso");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir funcionario");
+        }
+
     }
 
     public void alterarFornecedor(Fornecedores obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            //passo 1:criar comando sql
+            String sql = "update tb_fornecedores set marca=?,cnpj=?,vendedor=?,email=?,celular=?,telefone=?,cep=?,endereco=?,numero=?,bairro=?,cidade=?,complemento=?,estado=?,rg=?,cpf=? where id=?";
+
+            //passo 2:conectar ao banco e organizar o comando sql
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, obj.getMarca());
+            pst.setString(2, obj.getCnpj());
+            pst.setString(3, obj.getVendedor());
+            pst.setString(4, obj.getEmail());
+            pst.setString(5, obj.getCelular());
+            pst.setString(6, obj.getTelefone());
+            pst.setString(7, obj.getCep());
+            pst.setString(8, obj.getEndereco());
+            pst.setInt(9, obj.getNumero());
+            pst.setString(10, obj.getBairro());
+            pst.setString(11, obj.getCidade());
+            pst.setString(12, obj.getComplemento());
+            pst.setString(13, obj.getEstado());
+            pst.setString(14, obj.getRg());
+            pst.setString(15, obj.getCpf());
+         
+            pst.setInt(16, obj.getId());
+
+            //comando 3executar comando sql
+            pst.execute();
+            pst.close();
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso");
+
+        } catch (SQLException erroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar funcionario : " + erroSql);
+           
+
+        }
+
     }
 
     public List<Fornecedores> consultaFornecedorPorMarca(String marca) {
