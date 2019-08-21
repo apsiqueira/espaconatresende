@@ -68,11 +68,14 @@ public class FuncionariosDao {
             con.close();
 
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
-
+           
         } catch (SQLException erroSql) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar Funcionario!" + erroSql);
+            
+         
 
         }
+       
     }
 
     public List<Funcionarios> listarFuncionarios() {

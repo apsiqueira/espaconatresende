@@ -162,7 +162,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnPesquisaNome = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTextPesquisar = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
+        btnConsultarPorNome = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
@@ -589,11 +589,11 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisar.setText("Consulta");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarPorNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnConsultarPorNome.setText("Consulta");
+        btnConsultarPorNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnConsultarPorNomeActionPerformed(evt);
             }
         });
 
@@ -644,7 +644,7 @@ public class FrmCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(btnPesquisar))
+                        .addComponent(btnConsultarPorNome))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -655,7 +655,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(btnConsultarPorNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
         );
@@ -728,7 +728,7 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextPesquisarActionPerformed
 
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+    private void btnConsultarPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPorNomeActionPerformed
         String nome = "%" + jTextPesquisar.getText() + "%";
 
         ClientesDao dao = new ClientesDao();
@@ -768,13 +768,14 @@ public class FrmCliente extends javax.swing.JFrame {
 
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    }//GEN-LAST:event_btnConsultarPorNomeActionPerformed
 
     private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNascimentoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
         // TODO add your handling code here:
         //botao salvar
         btnNovo.setEnabled(false);
@@ -819,6 +820,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 btnExcluir.setEnabled(false);
                 btnSalvar.setEnabled(false);
                 BtnCancelar.setEnabled(false);
+                btnPesquisaNome.setEnabled(true);
 
             } catch (Exception e) {
 
@@ -845,7 +847,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+       
         this.setVisible(true);
 
         listarTabela();
@@ -1153,11 +1155,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton btnConsultarPorNome;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisaNome;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> comboTxtEstado;
     private javax.swing.JLabel jLabel1;

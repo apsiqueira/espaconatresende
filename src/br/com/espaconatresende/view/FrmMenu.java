@@ -195,7 +195,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         //deixar maximizado 
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        //this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setVisible(true);
         statusBarUsuario.setText(usuarioLogado);
     }//GEN-LAST:event_formWindowActivated
