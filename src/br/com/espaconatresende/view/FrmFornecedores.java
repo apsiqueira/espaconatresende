@@ -928,13 +928,14 @@ public class FrmFornecedores extends javax.swing.JFrame {
             btnExcluir.setEnabled(false);
             btnSalvar.setEnabled(false);
             btnCancelar.setEnabled(false);
+            btnPesquisaNome.setEnabled(true);
 
             Utilitarios ut = new Utilitarios();
             ut.limpaTela(painelCadastro);
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Erro ao salvar Fornecedor! " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao alterar Fornecedor! " + e);
         }
 
 

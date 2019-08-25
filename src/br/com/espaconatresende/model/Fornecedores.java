@@ -40,4 +40,12 @@ public class Fornecedores extends Clientes {
         this.vendedor = vendedor;
     }
 
+    @Override
+    public String toString() {
+        return this.getMarca();
+    }
+
+  
+    
+
 }
