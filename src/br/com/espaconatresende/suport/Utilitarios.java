@@ -9,6 +9,9 @@ import java.awt.Component;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ComboBoxBase;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,8 +29,10 @@ public class Utilitarios {
         Component components[]=container.getComponents();
         
         for(Component component:components){
-        if(component instanceof JTextField){
+        if(component instanceof JTextField ){
         ((JTextField)component).setText(null);
+        ((JComboBox)component).setSelectedItem(0);
+        
         }
         }
         

@@ -7,6 +7,7 @@ package br.com.espaconatresende.dao;
 
 import br.com.espaconatresende.jdbc.ConnectionFactory;
 import br.com.espaconatresende.model.Fornecedores;
+import br.com.espaconatresende.model.Produtos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -294,5 +295,55 @@ public class FornecedorDao {
         }
         return null;
     }
+
+    public void salvarProduto(Produtos obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+       public Fornecedores pesquisaFornecedorPelaMarca(String nome) {
+        try {
+
+            String sql = "select * from tb_fornecedores where marca=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setString(1, nome);
+
+            //quando se faz um selec no bunacop temos que armazenar em um objeto do tipo resultset
+            ResultSet rst = pst.executeQuery();
+
+            //pegar resultados do resultset percorrendo todos os campos  retornado
+            Fornecedores obj = new Fornecedores();
+            if (rst.next()) {
+               
+
+                //criando objeto cliente para receber os valores , objj recebe o valor com o nome do campo do banco
+                obj.setId(rst.getInt("id"));
+                obj.setMarca(rst.getString("marca"));
+                 obj.setVendedor(rst.getString("vendedor"));
+                obj.setCnpj(rst.getString("cnpj"));
+                obj.setEmail(rst.getString("email"));
+                obj.setCelular(rst.getString("celular"));
+                obj.setTelefone(rst.getString("telefone"));
+                obj.setCep(rst.getString("cep"));
+                obj.setEndereco(rst.getString("endereco"));
+                obj.setNumero(rst.getInt("numero"));
+                obj.setBairro(rst.getString("bairro"));
+                obj.setCidade(rst.getString("cidade"));
+                obj.setComplemento(rst.getString("complemento"));
+                obj.setEstado(rst.getString("estado"));
+                obj.setRg(rst.getString("rg"));
+                obj.setCpf(rst.getString("cpf"));
+                //adicionar o objeto na lista 
+                
+            }
+            return obj;
+
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(null, "erro: " +e);
+
+        }
+        return null;
+    }
+    
 
 }
