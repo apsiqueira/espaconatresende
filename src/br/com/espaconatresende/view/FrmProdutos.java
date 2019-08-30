@@ -18,6 +18,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -135,6 +136,7 @@ public class FrmProdutos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutos = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
+        btnCancelarConsulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Espaço Natalia Rezende");
@@ -284,9 +286,6 @@ public class FrmProdutos extends javax.swing.JFrame {
         painelCadastro.setLayout(painelCadastroLayout);
         painelCadastroLayout.setHorizontalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExcluir))
             .addGroup(painelCadastroLayout.createSequentialGroup()
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastroLayout.createSequentialGroup()
@@ -317,13 +316,19 @@ public class FrmProdutos extends javax.swing.JFrame {
                                         .addComponent(txtQtdEstoque, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(comboTxtFornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addGap(383, 383, 383)
-                                .addComponent(btnNovo)
-                                .addGap(47, 47, 47)
-                                .addComponent(btnSalvar)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnEditar)))))
-                .addContainerGap(177, Short.MAX_VALUE))
+                                .addGap(254, 254, 254)
+                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnExcluir))
+                                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                                        .addComponent(btnNovo)
+                                        .addGap(47, 47, 47)
+                                        .addComponent(btnSalvar)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(btnEditar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addGap(129, 129, 129))
         );
 
         painelCadastroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisarProduto, btnSalvar});
@@ -400,11 +405,11 @@ public class FrmProdutos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Fornecedor", "Preço", "Quantidade", "Descrição", "Produto"
+                "Código", "Produto", "Fornecedor", "Preço", "Quantidade", "Descrição"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -429,6 +434,14 @@ public class FrmProdutos extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Nome :");
 
+        btnCancelarConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCancelarConsulta.setText("Cancelar");
+        btnCancelarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarConsultaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -440,7 +453,9 @@ public class FrmProdutos extends javax.swing.JFrame {
                 .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnConsultarProduto_fornecedor)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -452,7 +467,8 @@ public class FrmProdutos extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarProduto_fornecedor))
+                    .addComponent(btnConsultarProduto_fornecedor)
+                    .addComponent(btnCancelarConsulta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -478,7 +494,7 @@ public class FrmProdutos extends javax.swing.JFrame {
                 .addComponent(jTableAbasProdutos))
         );
 
-        pack();
+        setBounds(0, 0, 1199, 743);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPesquisarActionPerformed
@@ -487,35 +503,26 @@ public class FrmProdutos extends javax.swing.JFrame {
 
 
     private void btnConsultarProduto_fornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarProduto_fornecedorActionPerformed
-        String nome = "%" + jTextPesquisar.getText() + "%";
+        String nomeProduto = jTextPesquisar.getText();
 
-        FornecedorDao dao = new FornecedorDao();
+        ProdutosDao dao = new ProdutosDao();
 
         //chama o metodo listar clientes da classe clientesdao e passa para a lista
-        List<Fornecedores> lista = dao(nome);
+        List<Produtos> lista = dao.consultarProdutoPeloFornecedor(nomeProduto);
 
         //define um dfalttable model fazendo o cast do modelo da tabela 
         DefaultTableModel dftm = (DefaultTableModel) tabelaProdutos.getModel();
         //seta valor inicial de apresentação de linha de dados para vazio
         dftm.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Produtos p : lista) {
             dftm.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getEstado(),
-                c.getNascimento()
+                p.getId(),
+                p.getNomeProduto(),
+                p.getFornecedor().getNome(),
+                p.getPreco(),
+                p.getQuantidadeProduto(),
+                p.getDescricaoProduto()
 
             });
 
@@ -658,8 +665,8 @@ public class FrmProdutos extends javax.swing.JFrame {
                     jTextPrecoCompra.setText(String.valueOf(obj.getPreco()));
                     txtQtdEstoque.setText(String.valueOf(obj.getQuantidadeProduto()));
                     txtDescricao.setText(String.valueOf(obj.getDescricaoProduto()));
-                    
-                    fornecedor=daoForncedor.pesquisaFornecedorPelaMarca(obj.getFornecedor().getNome());
+
+                    fornecedor = daoForncedor.pesquisaFornecedorPelaMarca(obj.getFornecedor().getNome());
 
                     comboTxtFornecedorProduto.getModel().setSelectedItem(fornecedor);
 
@@ -708,6 +715,7 @@ public class FrmProdutos extends javax.swing.JFrame {
                 btnCancelar.setEnabled(false);
                 Utilitarios ut = new Utilitarios();
                 ut.limpaTela(painelCadastro);
+                
 
             }
 
@@ -845,6 +853,12 @@ public class FrmProdutos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboTxtFornecedorProdutoAncestorAdded
 
+    private void btnCancelarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConsultaActionPerformed
+        // TODO add your handling code here:
+
+        listarTabela();
+    }//GEN-LAST:event_btnCancelarConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -883,6 +897,7 @@ public class FrmProdutos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarConsulta;
     private javax.swing.JButton btnConsultarProduto_fornecedor;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;

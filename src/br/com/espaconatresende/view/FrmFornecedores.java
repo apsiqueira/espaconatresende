@@ -580,7 +580,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar)
@@ -673,7 +673,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addComponent(jTextPesquisarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarMarca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
         );
 
         jTableAbas.addTab("Consulta e alteração de Fornecedores", jPanel3);
@@ -692,10 +692,10 @@ public class FrmFornecedores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTableAbas))
+                .addComponent(jTableAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1199, 743));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -787,8 +787,8 @@ public class FrmFornecedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         //botao salvar
 
-        if (txtVendedor.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nome precisa ser obrigatoriamente preechido.");
+        if (txtMarca.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome da marca deve ser preechido.");
 
         } else {
             Fornecedores obj = new Fornecedores();

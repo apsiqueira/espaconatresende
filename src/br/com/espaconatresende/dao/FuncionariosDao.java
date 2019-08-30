@@ -343,6 +343,7 @@ public class FuncionariosDao {
               menuSistema.setVisible(true);
               menuSistema.usuarioLogado=rst.getString("nome");
               
+              
             
             }
             

@@ -154,7 +154,7 @@ public class ProdutosDao {
             JOptionPane.showMessageDialog(null, "Produto excluido com sucesso!");
 
         } catch (SQLException erroSql) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir Produto!" + erroSql);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Produto do banco!" + erroSql);
 
         }
 
@@ -200,33 +200,37 @@ public class ProdutosDao {
             List<Produtos> listaProdutos = new ArrayList<>();
 
             //criar comando sql, organizar e executar
-            String sql = "select * from tb_produtos where nome_produto like ?";
+            String sql = "select p.id,p.nome_produto,f.marca,p.preco,p.qtd_estoque,p.descricao from tb_produtos as p "
+                    + "inner join tb_fornecedores as f on (p.for_id=f.id) where p.nome_produto like?";
+
             PreparedStatement pst = con.prepareStatement(sql);
 
             pst.setString(1, nome);
 
-            //quando se faz um selec no banco e  temos que armazenar em um objeto do tipo resultset
             ResultSet rst = pst.executeQuery();
+            Produtos obj = new Produtos();
+            Fornecedores fornecedor = new Fornecedores();
 
-            //pegar resultados do resultset percorrendo todos os campos  retornado
-            while (rst.next()) {
+            if (rst.next()) {
+                obj.setId(rst.getInt("p.id"));
+                obj.setNomeProduto(rst.getString("p.nome_produto"));
+                obj.setFornecedor(fornecedor);
+                fornecedor.setNome(rst.getString("f.marca"));
+                obj.setPreco(rst.getDouble("p.preco"));
+                obj.setQuantidadeProduto(rst.getInt("p.qtd_estoque"));
+                obj.setDescricaoProduto(rst.getString("p.descricao"));
 
-                //criando objeto cliente para receber os valores , objj recebe o valor com o nome do campo do banco
-                Produtos obj = new Produtos();
-                obj.setId(rst.getInt("id"));
-
-                //adicionar o objeto na lista 
                 listaProdutos.add(obj);
-
-                //retorna a lista 
                 return listaProdutos;
             }
 
-        } catch (SQLException e) {
+            return null;
 
-            JOptionPane.showMessageDialog(null, e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro na pesquisa do produto");
+            System.out.println(e.toString());
+
         }
         return null;
-
     }
 }

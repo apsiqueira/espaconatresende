@@ -107,7 +107,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(false);
+        btnCancelar.setEnabled(false);
 
     }
 
@@ -158,7 +158,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnPesquisaNome = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTextPesquisar = new javax.swing.JTextField();
@@ -167,7 +167,7 @@ public class FrmCliente extends javax.swing.JFrame {
         tabelaClientes = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Espaço Natalia Rezende");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setSize(new java.awt.Dimension(0, 0));
@@ -190,14 +190,14 @@ public class FrmCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(756, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTableAbas.setBackground(new java.awt.Color(255, 255, 255));
@@ -411,10 +411,10 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
-        BtnCancelar.setText("CANCELAR");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -435,7 +435,7 @@ public class FrmCliente extends javax.swing.JFrame {
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(BtnCancelar))
+                                .addComponent(btnCancelar))
                             .addGroup(painelCadastroLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,10 +505,10 @@ public class FrmCliente extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(78, 78, 78)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        painelCadastroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
 
         painelCadastroLayout.setVerticalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,17 +564,17 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir)
                     .addComponent(btnEditar)
-                    .addComponent(BtnCancelar))
+                    .addComponent(btnCancelar))
                 .addContainerGap())
         );
 
-        painelCadastroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
+        painelCadastroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnEditar, btnExcluir, btnNovo, btnPesquisaNome, btnSalvar});
 
         jTableAbas.addTab("Cadastro e pesquisa de Clientes ", painelCadastro);
         painelCadastro.getAccessibleContext().setAccessibleName("");
@@ -603,11 +603,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "RG", "Cpf", "E-mail", "Senha", "Cargo", "Nivel de acesso", "Celular", "Telefone", "Cep", "Endereço", "Numero", "Comp", "Bairro", "Cidade", "Uf", "Nasc"
+                "Código", "Nome", "RG", "Cpf", "E-mail", "Telefone", "Celular", "Cep", "Endereço", "Numero", "Comp", "Bairro", "Cidade", "Uf", "Nasc"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true
+                true, true, true, true, true, true, true, true, true, true, true, true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -628,6 +628,9 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabelaClientes);
+        if (tabelaClientes.getColumnModel().getColumnCount() > 0) {
+            tabelaClientes.getColumnModel().getColumn(0).setHeaderValue("Código");
+        }
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Nome :");
@@ -638,15 +641,15 @@ public class FrmCliente extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnConsultarPorNome))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnConsultarPorNome)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -657,7 +660,7 @@ public class FrmCliente extends javax.swing.JFrame {
                     .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarPorNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
         );
 
         jTableAbas.addTab("Consulta e alteração de clientes", jPanel3);
@@ -667,20 +670,18 @@ public class FrmCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTableAbas)
-                .addContainerGap())
+            .addComponent(jTableAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTableAbas))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1199, 743));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
@@ -782,7 +783,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(true);
-        BtnCancelar.setEnabled(true);
+        btnCancelar.setEnabled(true);
 
         if (txtNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome precisa ser obrigatoriamente preechido.");
@@ -819,7 +820,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(false);
+                btnCancelar.setEnabled(false);
                 btnPesquisaNome.setEnabled(true);
 
             } catch (Exception e) {
@@ -841,7 +842,8 @@ public class FrmCliente extends javax.swing.JFrame {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(true);
-        BtnCancelar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnPesquisaNome.setEnabled(false);
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -877,7 +879,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(false);
+                btnCancelar.setEnabled(false);
                 Utilitarios ut = new Utilitarios();
                 ut.limpaTela(painelCadastro);
 
@@ -898,7 +900,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnEditar.setEnabled(true);
         btnExcluir.setEnabled(true);
         btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(true);
+        btnCancelar.setEnabled(true);
 
         //caixa de confirmação
         Object[] options = {"Cancelar", "Confirmar"};
@@ -958,7 +960,7 @@ public class FrmCliente extends javax.swing.JFrame {
             btnEditar.setEnabled(false);
             btnExcluir.setEnabled(false);
             btnSalvar.setEnabled(false);
-            BtnCancelar.setEnabled(false);
+            btnCancelar.setEnabled(false);
 
             Utilitarios ut = new Utilitarios();
             ut.limpaTela(painelCadastro);
@@ -975,7 +977,7 @@ public class FrmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tabelaClientesMouseReleased
 
-    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         limparTela();
 
@@ -983,8 +985,8 @@ public class FrmCliente extends javax.swing.JFrame {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnSalvar.setEnabled(false);
-        BtnCancelar.setEnabled(false);
-    }//GEN-LAST:event_BtnCancelarActionPerformed
+        btnCancelar.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaNomeActionPerformed
         // TODO add your handling code here:
@@ -1032,7 +1034,7 @@ public class FrmCliente extends javax.swing.JFrame {
                     btnEditar.setEnabled(false);
                     btnExcluir.setEnabled(false);
                     btnSalvar.setEnabled(false);
-                    BtnCancelar.setEnabled(true);
+                    btnCancelar.setEnabled(true);
 
                 }
 
@@ -1083,7 +1085,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 btnEditar.setEnabled(true);
                 btnExcluir.setEnabled(true);
                 btnSalvar.setEnabled(false);
-                BtnCancelar.setEnabled(true);
+                btnCancelar.setEnabled(true);
 
                 //caixa de confirmação
                 Object[] options = {"Cancelar", "Confirmar"};
@@ -1154,7 +1156,7 @@ public class FrmCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConsultarPorNome;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;

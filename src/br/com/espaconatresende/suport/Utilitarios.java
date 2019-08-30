@@ -31,7 +31,9 @@ public class Utilitarios {
         for(Component component:components){
         if(component instanceof JTextField ){
         ((JTextField)component).setText(null);
-        ((JComboBox)component).setSelectedItem(0);
+       
+        
+       
         
         }
         }

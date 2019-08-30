@@ -105,6 +105,7 @@ public class FornecedorDao {
                 obj.setId(rst.getInt("id"));
                 obj.setMarca(rst.getString("marca"));
                 obj.setCnpj(rst.getString("cnpj"));
+                obj.setVendedor(rst.getString("vendedor"));
                 obj.setEmail(rst.getString("email"));
                 obj.setCelular(rst.getString("celular"));
                 obj.setTelefone(rst.getString("telefone"));
@@ -296,10 +297,6 @@ public class FornecedorDao {
         return null;
     }
 
-    public void salvarProduto(Produtos obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
        public Fornecedores pesquisaFornecedorPelaMarca(String nome) {
         try {
 
