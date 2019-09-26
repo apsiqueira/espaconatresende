@@ -138,7 +138,7 @@ public class FrmProdutos extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         btnCancelarConsulta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Espaço Natalia Rezende");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setSize(new java.awt.Dimension(0, 0));
@@ -326,8 +326,7 @@ public class FrmProdutos extends javax.swing.JFrame {
                                         .addGap(47, 47, 47)
                                         .addComponent(btnSalvar)
                                         .addGap(30, 30, 30)
-                                        .addComponent(btnEditar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addComponent(btnEditar)))))))
                 .addGap(129, 129, 129))
         );
 

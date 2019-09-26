@@ -14,6 +14,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,12 +27,46 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmCliente extends javax.swing.JFrame {
 
+    List<JTextField> objsTela;
+
     public void positionFrame() {
 
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw
                 = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+
+        objsTela = new ArrayList<>();
+
+        objsTela.add(txtNome);
+        objsTela.add(txtRg);
+        objsTela.add(txtCpf);
+        objsTela.add(txtEmail);
+        objsTela.add(txtTelefone);
+        objsTela.add(txtCep);
+        objsTela.add(txtEndereco);
+        objsTela.add(txtNumero);
+        objsTela.add(txtComplemento);
+        objsTela.add(txtBairro);
+        objsTela.add(txtCidade);
+        objsTela.add(txtNumero);
+        objsTela.add(txtNascimento);
+
+    }
+
+    public void desabilitarEdição() {
+        for (JTextField jtext : objsTela) {
+            jtext.setEditable(false);
+        }
+        comboTxtEstado.setEditable(false);
+
+    }
+
+    public void habilitarEdição() {
+        for (JTextField jtext : objsTela) {
+            jtext.setEditable(true);
+        }
+        comboTxtEstado.setEditable(true);
 
     }
 
@@ -776,7 +811,7 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNascimentoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        desabilitarEdição();
         // TODO add your handling code here:
         //botao salvar
         btnNovo.setEnabled(false);
@@ -837,6 +872,7 @@ public class FrmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         limparTela();
+        habilitarEdição();
 
         btnNovo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -849,7 +885,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-       
+        desabilitarEdição();
         this.setVisible(true);
 
         listarTabela();
@@ -978,7 +1014,9 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaClientesMouseReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        desabilitarEdição();
+
+// TODO add your handling code here:
         limparTela();
 
         btnNovo.setEnabled(true);
