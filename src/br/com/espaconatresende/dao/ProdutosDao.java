@@ -6,10 +6,8 @@
 package br.com.espaconatresende.dao;
 
 import br.com.espaconatresende.jdbc.ConnectionFactory;
-import br.com.espaconatresende.model.Clientes;
 import br.com.espaconatresende.model.Fornecedores;
 import br.com.espaconatresende.model.Produtos;
-import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -232,5 +230,36 @@ public class ProdutosDao {
 
         }
         return null;
+    }
+    public Produtos pesquisarProdutoPorId(int idBusca) {
+        try {
+            String sql = "select from tb_produtos id = ?";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, idBusca);
+
+            ResultSet rst = pst.executeQuery();
+            Produtos obj = new Produtos();
+            Fornecedores fornecedor = new Fornecedores();
+
+            if (rst.next()) {
+                obj.setId(rst.getInt("p.id"));
+                obj.setNomeProduto(rst.getString("p.nome_produto"));
+                obj.setPreco(rst.getDouble("p.preco"));
+                fornecedor.setNome(rst.getString("f.marca"));
+                obj.setFornecedor(fornecedor);
+                obj.setQuantidadeProduto(rst.getInt("p.qtd_estoque"));
+                obj.setDescricaoProduto(rst.getString("p.descricao"));
+
+                return obj;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro na pesquisa do produto");
+            System.out.println(e.toString());
+
+        }
+        return null;
+
     }
 }

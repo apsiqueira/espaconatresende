@@ -155,7 +155,7 @@ public class FrmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
         String nome=txtLogin.getText().trim();
-         String senha=txtSenha.getText();
+        String senha=txtSenha.getText();
         
         
         

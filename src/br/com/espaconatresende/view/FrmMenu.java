@@ -68,6 +68,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
@@ -212,6 +213,9 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu8.add(jMenuItem7);
+
+        jMenuItem9.setText("Gerar Orçamento");
+        jMenu8.add(jMenuItem9);
 
         jMenuBar1.add(jMenu8);
 
@@ -377,6 +381,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JDesktopPane painelDesktop;
     private javax.swing.JLabel statusBarUsuario;
     // End of variables declaration//GEN-END:variables

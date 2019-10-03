@@ -12,9 +12,7 @@ import br.com.espaconatresende.suport.Utilitarios;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -26,12 +24,50 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmFuncionarios extends javax.swing.JFrame {
 
+    List<JTextField> listaObjetos;
+
     public void positionFrame() {
 
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw
                 = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+
+        listaObjetos = new ArrayList<>();
+        listaObjetos.add(txtCodigo);
+//listaObjetos.add(txtNome);
+        listaObjetos.add(txtRg);
+        listaObjetos.add(txtCpf);
+        listaObjetos.add(txtEmail);
+        listaObjetos.add(txtCelular);
+        listaObjetos.add(txtTelefone);
+        listaObjetos.add(txtCep);
+        listaObjetos.add(txtEndereco);
+        listaObjetos.add(txtNumero);
+        listaObjetos.add(txtComplemento);
+        listaObjetos.add(txtCidade);
+//listaObjetos.add(comboTxtEstado.getSelectedInde);
+        listaObjetos.add(txtNascimento);
+
+    }
+
+    public void bloqueiaDados() {
+
+        for (JTextField jt : listaObjetos) {
+            jt.setEditable(false);
+
+        }
+        comboTxtEstado.setEditable(false);
+
+    }
+
+    public void liberaDados() {
+
+        for (JTextField jt : listaObjetos) {
+            jt.setEditable(true);
+
+        }
+        comboTxtEstado.setEditable(true);
 
     }
 
@@ -103,6 +139,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
         positionFrame();
         txtNumero.setDocument(new SoNumeros());
+        bloqueiaDados();
         //txtCpf.setDocument(new SoNumeros());
         //txtCelular.setDocument(new SoNumeros());
         //txtTelefone.setDocument(new SoNumeros());
@@ -199,14 +236,14 @@ public class FrmFuncionarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(666, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTableAbas.setBackground(new java.awt.Color(255, 255, 255));
@@ -552,7 +589,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                         .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnExcluir)
                             .addComponent(passwordFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         painelCadastroFuncionarioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnCancelar, btnEditar, btnExcluir, btnNovoFuncionario, btnPesquisaNome, btnSalvarFuncionario});
@@ -621,7 +658,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel19)
                         .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvarFuncionario)
@@ -709,7 +746,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                         .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(btnPesquisar)
-                        .addGap(0, 259, Short.MAX_VALUE)))
+                        .addGap(0, 279, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -721,7 +758,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     .addComponent(jTextPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
 
@@ -732,17 +769,14 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTableAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jTableAbas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTableAbas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTableAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1199, 743);
@@ -886,12 +920,13 @@ public class FrmFuncionarios extends javax.swing.JFrame {
 
                 FuncionariosDao dao = new FuncionariosDao();
                 dao.salvarFuncionario(obj);
+                limparTela();
 
                 btnNovoFuncionario.setEnabled(true);
                 btnEditar.setEnabled(false);
                 btnExcluir.setEnabled(false);
                 btnSalvarFuncionario.setEnabled(false);
-                BtnCancelar.setEnabled(false);
+                BtnCancelar.setEnabled(true);
 
             } catch (Exception e) {
 
@@ -907,10 +942,11 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         limparTela();
+        liberaDados();
 
-        btnNovoFuncionario.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnExcluir.setEnabled(false);
+        // btnNovoFuncionario.setEnabled(false);
+        // btnEditar.setEnabled(false);
+        //  btnExcluir.setEnabled(false);
         btnSalvarFuncionario.setEnabled(true);
         BtnCancelar.setEnabled(true);
         btnPesquisaNome.setEnabled(false);
@@ -920,8 +956,8 @@ public class FrmFuncionarios extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
 
-        
         this.setVisible(true);
+      
 
         listarTabela();
 
@@ -951,6 +987,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                 btnExcluir.setEnabled(false);
                 btnSalvarFuncionario.setEnabled(false);
                 BtnCancelar.setEnabled(false);
+
                 Utilitarios ut = new Utilitarios();
                 ut.limpaTela(painelCadastroFuncionario);
 
@@ -1066,7 +1103,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         btnExcluir.setEnabled(false);
         btnSalvarFuncionario.setEnabled(false);
         BtnCancelar.setEnabled(false);
-        btnPesquisar.setEnabled(true);
+        btnPesquisaNome.setEnabled(true);
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void btnPesquisaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaNomeActionPerformed
@@ -1108,14 +1145,18 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                     txtComplemento.setText(obj.getComplemento());
                     txtBairro.setText(obj.getBairro());
                     txtCidade.setText(obj.getCidade());
+                    txtCargo.setText(obj.getCargo());
+                    passwordFuncionario.setText(obj.getSenha());
+                    comboTxtNivelAcesso.setSelectedItem(obj.getNivelAcesso());
                     comboTxtEstado.setSelectedItem(obj.getEstado());
                     txtNascimento.setText(obj.getNascimento());
 
-                    btnNovoFuncionario.setEnabled(true);
-                    btnEditar.setEnabled(false);
-                    btnExcluir.setEnabled(false);
+                    btnNovoFuncionario.setEnabled(false);
+                    btnEditar.setEnabled(true);
+                    btnExcluir.setEnabled(true);
                     btnSalvarFuncionario.setEnabled(false);
                     BtnCancelar.setEnabled(true);
+                 
 
                 }
 
@@ -1178,9 +1219,10 @@ public class FrmFuncionarios extends javax.swing.JFrame {
                 int op = JOptionPane.showOptionDialog(null, "Deseja abrir o contato para edição?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 
                 if (op == 1) {
-                    btnEditar.setEnabled(true);
 
                     jTableAbas.setSelectedIndex(0);
+                    btnEditar.setEnabled(true);
+                    liberaDados();
 
                     txtCodigo.setText(tabelaFuncionarios.getValueAt(tabelaFuncionarios.getSelectedRow(), 0).toString());
                     txtNome.setText(tabelaFuncionarios.getValueAt(tabelaFuncionarios.getSelectedRow(), 1).toString());

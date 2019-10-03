@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,6 +28,8 @@ import javax.swing.table.DefaultTableModel;
  * @author power
  */
 public class FrmFornecedores extends javax.swing.JFrame {
+
+    List<JTextField> listaObjetos;
 
     public void limparTelaFornecedor() {
         txtCodigo.setText("");
@@ -54,6 +57,38 @@ public class FrmFornecedores extends javax.swing.JFrame {
         Dimension dw
                 = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+
+        listaObjetos = new ArrayList<>();
+        listaObjetos.add(txtCodigo);
+        listaObjetos.add(txtMarca);
+        listaObjetos.add(txtEmail);
+        listaObjetos.add(txtCelular);
+        listaObjetos.add(txtTelefone);
+        listaObjetos.add(txtCep);
+        listaObjetos.add(txtEndereco);
+        listaObjetos.add(txtNumero);
+        listaObjetos.add(txtComplemento);
+        listaObjetos.add(txtRg);
+        listaObjetos.add(txtCnpj);
+        listaObjetos.add(txtCpf);
+        listaObjetos.add(txtBairro);
+        listaObjetos.add(txtCidade);
+
+    }
+
+    public void bloquearDados() {
+        for (JTextField jt : listaObjetos) {
+            jt.setEditable(false);
+        }
+        comboTxtEstado.setEditable(false);
+
+    }
+
+    public void liberarDados() {
+        for (JTextField jt : listaObjetos) {
+            jt.setEditable(true);
+        }
+        comboTxtEstado.setEditable(true);
 
     }
 
@@ -102,7 +137,8 @@ public class FrmFornecedores extends javax.swing.JFrame {
     public FrmFornecedores() {
         initComponents();
 
-        //   positionFrame();
+        positionFrame();
+        bloquearDados();
         txtNumero.setDocument(new SoNumeros());
         //txtCpf.setDocument(new SoNumeros());
         //txtCelular.setDocument(new SoNumeros());
@@ -183,6 +219,9 @@ public class FrmFornecedores extends javax.swing.JFrame {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
         });
 
         jPanel1.setBackground(new java.awt.Color(204, 153, 255));
@@ -205,7 +244,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jTableAbas.setBackground(new java.awt.Color(255, 255, 255));
@@ -580,7 +619,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar)
@@ -673,7 +712,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     .addComponent(jTextPesquisarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarMarca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
         );
 
         jTableAbas.addTab("Consulta e alteração de Fornecedores", jPanel3);
@@ -683,9 +722,10 @@ public class FrmFornecedores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTableAbas))
+                .addComponent(jTableAbas)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -833,7 +873,9 @@ public class FrmFornecedores extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-
+        
+        
+        liberarDados();
         limparTelaFornecedor();
 
         btnNovo.setEnabled(false);
@@ -987,7 +1029,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     txtCodigo.setText(String.valueOf(obj.getId()));
                     txtMarca.setText(String.valueOf(obj.getMarca()));
                     txtCnpj.setText(String.valueOf(obj.getCnpj()));
-                    txtVendedor.setText(obj.getNome());
+                    txtVendedor.setText(obj.getVendedor());
                     txtEmail.setText(obj.getEmail());
                     txtCelular.setText(obj.getCelular());
                     txtTelefone.setText(obj.getTelefone());
@@ -1001,9 +1043,11 @@ public class FrmFornecedores extends javax.swing.JFrame {
                     txtRg.setText(obj.getRg());
                     txtCpf.setText(obj.getCpf());
 
-                    btnNovo.setEnabled(true);
-                    btnEditar.setEnabled(false);
-                    btnExcluir.setEnabled(false);
+                    liberarDados();
+
+                    btnNovo.setEnabled(false);
+                    btnEditar.setEnabled(true);
+                    btnExcluir.setEnabled(true);
                     btnSalvar.setEnabled(false);
                     btnCancelar.setEnabled(true);
 
@@ -1064,25 +1108,27 @@ public class FrmFornecedores extends javax.swing.JFrame {
                 int op = JOptionPane.showOptionDialog(null, "Deseja abrir o contato para edição?", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 
                 if (op == 1) {
+
                     btnEditar.setEnabled(true);
                     jTableAbas.setSelectedIndex(0);
 
                     txtCodigo.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 0).toString());
                     txtMarca.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 1).toString());
                     txtCnpj.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
-                    txtVendedor.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
+                    txtVendedor.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 3).toString());
                     txtEmail.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 4).toString());
                     txtCelular.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 5).toString());
                     txtTelefone.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 6).toString());
                     txtCep.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 7).toString());
                     txtEndereco.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 8).toString());
                     txtNumero.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 9).toString());
-                    txtBairro.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 11).toString());
-                    txtCidade.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 12).toString());
-                    txtComplemento.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 10).toString());
+                    txtBairro.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 10).toString());
+                    txtCidade.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 11).toString());
+                    txtComplemento.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 12).toString());
                     comboTxtEstado.setSelectedItem(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 13).toString());
-                    txtRg.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
-                    txtCpf.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 3).toString());
+                    txtRg.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 14).toString());
+                    txtCpf.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 15).toString());
+                    liberarDados();
 
                 }
 
@@ -1105,10 +1151,15 @@ public class FrmFornecedores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRgActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1132,6 +1183,7 @@ public class FrmFornecedores extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

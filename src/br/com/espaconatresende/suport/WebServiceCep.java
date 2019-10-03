@@ -1,4 +1,5 @@
 package br.com.espaconatresende.suport;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -238,10 +239,10 @@ public final class WebServiceCep {
 		} catch (DocumentException ex) {
 			if (ex.getNestedException() != null && ex.getNestedException() 
 					instanceof java.net.UnknownHostException) {
-				loadCep.setResultText("Site não encontrado.");
+				loadCep.setResultText("Site n�o encontrado.");
 				loadCep.setResulCode(-14);
 			} else {
-				loadCep.setResultText("Não foi possivel ler o documento xml.");
+				loadCep.setResultText("N�o foi possivel ler o documento xml.");
 				loadCep.setResulCode(-15);
 			}
 			loadCep.setExceptio(ex);

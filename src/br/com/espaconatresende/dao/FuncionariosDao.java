@@ -336,9 +336,11 @@ public class FuncionariosDao {
             
             ResultSet rst=pst.executeQuery();
             
+            
             if(rst.next()){
-                
-              JOptionPane.showMessageDialog(null,"Bem vinda "+nome+"!.");
+            String nivelAcesso=rst.getString("nivel_acesso");
+            System.out.println(nivelAcesso);
+              JOptionPane.showMessageDialog(null,"Olá "+nome+"!.");
               FrmMenu menuSistema=new FrmMenu();
               menuSistema.setVisible(true);
               menuSistema.usuarioLogado=rst.getString("nome");

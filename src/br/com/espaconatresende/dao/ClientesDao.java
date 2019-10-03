@@ -286,8 +286,7 @@ public class ClientesDao {
         WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
 
         Clientes obj = new Clientes();
-        boolean conexao=consegueConectar("http://www.google.com.br");
-        
+        boolean conexao = consegueConectar("http://www.google.com.br");
 
         try {
             if (webServiceCep.wasSuccessful()) {
@@ -296,19 +295,61 @@ public class ClientesDao {
                 obj.setBairro(webServiceCep.getBairro());
                 obj.setEstado(webServiceCep.getUf());
                 return obj;
-       
-            }
-            else if(conexao==false ){
-                
+
+            } else if (conexao == false) {
+
                 JOptionPane.showMessageDialog(null, "Erro de conexão com internet.");
-            }
-            else{
-                
+            } else {
+
                 JOptionPane.showMessageDialog(null, "Erro no formato do cep");
             }
         } catch (Exception e) {
         }
         return null;
+    }
+
+    public Clientes consultaPorCpf(String cpf) {
+
+        try {
+
+            String sql = "select * from tb_clientes where cpf=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setString(1, cpf);
+
+            //quando se faz um select no banco temos que armazenar em um objeto do tipo resultset
+            ResultSet rst = pst.executeQuery();
+
+            //pegar resultados do resultset percorrendo todos os campos  retornado
+            Clientes obj = new Clientes();
+            if (rst.next()) {
+
+                //criando objeto cliente para receber os valores , objj recebe o valor com o nome do campo do banco
+                obj.setId(rst.getInt("id"));
+                obj.setNome(rst.getString("nome"));
+                obj.setRg(rst.getString("rg"));
+                obj.setCpf(rst.getString("cpf"));
+                obj.setEmail(rst.getString("email"));
+                obj.setTelefone(rst.getString("telefone"));
+                obj.setCelular(rst.getString("celular"));
+                obj.setCep(rst.getString("cep"));
+                obj.setEndereco(rst.getString("endereco"));
+                obj.setNumero(rst.getInt("numero"));
+                obj.setComplemento(rst.getString("complemento"));
+                obj.setBairro(rst.getString("bairro"));
+                obj.setCidade(rst.getString("cidade"));
+                obj.setEstado(rst.getString("estado"));
+                obj.setNascimento(rst.getString("nascimento"));
+
+                //adicionar o objeto na lista 
+            }
+            return obj;
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return null;
+        }
     }
 
     public static boolean consegueConectar(String address) {

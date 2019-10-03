@@ -38,7 +38,6 @@ public class FrmCliente extends javax.swing.JFrame {
 
         objsTela = new ArrayList<>();
 
-        objsTela.add(txtNome);
         objsTela.add(txtRg);
         objsTela.add(txtCpf);
         objsTela.add(txtEmail);
@@ -132,8 +131,10 @@ public class FrmCliente extends javax.swing.JFrame {
      */
     public FrmCliente() {
         initComponents();
-
         positionFrame();
+        desabilitarEdição();
+
+       
         txtNumero.setDocument(new SoNumeros());
         //txtCpf.setDocument(new SoNumeros());
         //txtCelular.setDocument(new SoNumeros());
@@ -885,7 +886,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        desabilitarEdição();
+
         this.setVisible(true);
 
         listarTabela();
@@ -1048,7 +1049,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 //uasr o metodo pesquisar por nome 
                 obj = dao.consultaPorNome(nome);
                 if (obj.getNome() == null) {
-                    JOptionPane.showMessageDialog(null, "Cadastro não correspendo a um regsitro exato no banco de dados");
+                    JOptionPane.showMessageDialog(null, "Cadastro não correspende a um regsitro exato no banco de dados");
                     //exibir dados do obj nos campos de texto
 
                 } else {
@@ -1068,9 +1069,9 @@ public class FrmCliente extends javax.swing.JFrame {
                     comboTxtEstado.setSelectedItem(obj.getEstado());
                     txtNascimento.setText(obj.getNascimento());
 
-                    btnNovo.setEnabled(true);
-                    btnEditar.setEnabled(false);
-                    btnExcluir.setEnabled(false);
+                    btnNovo.setEnabled(false);
+                    btnEditar.setEnabled(true);
+                    btnExcluir.setEnabled(true);
                     btnSalvar.setEnabled(false);
                     btnCancelar.setEnabled(true);
 
@@ -1132,6 +1133,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 if (op == 1) {
                     btnEditar.setEnabled(true);
                     jTableAbas.setSelectedIndex(0);
+                    habilitarEdição();
 
                     txtCodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
                     txtNome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
